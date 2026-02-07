@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>خدماتي الاحترافية | بوابة العملاء</title>
+    <title>مصطفى حماده | خدمات احترافية</title>
     
     <!-- خط 'القاهرة' -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,9 @@
                             600: '#0284c7',
                             700: '#0369a1',
                             900: '#0c4a6e',
-                        }
+                        },
+                        whatsapp: '#25D366',
+                        whatsappHover: '#128C7E'
                     },
                     animation: {
                         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
@@ -45,14 +47,6 @@
         body { font-family: 'Cairo', sans-serif; scroll-behavior: smooth; }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
         .gradient-text { background: linear-gradient(to left, #0284c7, #2563eb); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        /* تنسيق النجوم */
-        .star-rating i { cursor: pointer; transition: color 0.2s; }
-        .star-rating i.active { color: #fbbf24; }
-        .star-rating i:hover { color: #f59e0b; }
-        
-        /* إخفاء العناصر */
-        .hidden-section { display: none; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-cairo overflow-x-hidden">
@@ -62,11 +56,11 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- الشعار -->
-                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="showSection('landing-page')">
-                    <div class="text-2xl font-bold text-brand-700 flex items-center gap-2">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-brand-700 flex items-center gap-2">
                         <i class="fa-solid fa-layer-group text-3xl"></i>
                         <span>برو<span class="text-gray-900">سيرفس</span></span>
-                    </div>
+                    </a>
                 </div>
                 
                 <!-- الروابط -->
@@ -78,18 +72,10 @@
                     <a href="#about" class="text-gray-700 hover:text-brand-600 transition">من أنا</a>
                     <a href="#payment" class="text-gray-700 hover:text-brand-600 transition">الدفع</a>
                     
-                    <!-- زر تسجيل الدخول -->
-                    <button onclick="toggleLoginModal()" id="login-btn" class="mr-2 bg-gray-900 text-white px-4 py-2 rounded-full hover:bg-gray-800 transition flex items-center gap-2 shadow-lg shadow-gray-500/30 text-sm">
-                        <i class="fa-solid fa-user"></i> دخول العملاء
-                    </button>
-                    
-                    <!-- منطقة المستخدم -->
-                    <div id="user-area" class="hidden items-center gap-3 mr-2">
-                        <span class="font-bold text-brand-700 text-sm" id="user-name-display">مرحباً، العميل</span>
-                        <button onclick="logout()" class="text-red-500 hover:text-red-700 text-sm font-bold bg-red-50 px-3 py-1 rounded-full">
-                            <i class="fa-solid fa-sign-out-alt"></i>
-                        </button>
-                    </div>
+                    <!-- زر الواتساب في النافبار -->
+                    <a href="https://wa.me/201098403244" target="_blank" class="mr-4 bg-whatsapp text-white px-5 py-2 rounded-full hover:bg-whatsappHover transition flex items-center gap-2 shadow-lg shadow-green-500/30 text-sm transform hover:-translate-y-0.5">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> <span>تواصل واتساب</span>
+                    </a>
                 </div>
 
                 <!-- زر القائمة للجوال -->
@@ -110,589 +96,478 @@
                 <a href="#testimonials" class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-brand-600">آراء العملاء</a>
                 <a href="#about" class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-brand-600">من أنا</a>
                 <a href="#payment" class="block px-3 py-2 rounded-md font-medium text-gray-700 hover:text-brand-600">طرق الدفع</a>
-                <button onclick="toggleLoginModal()" class="w-full text-center mt-2 px-4 py-2 bg-brand-600 text-white rounded-lg">دخول العملاء</button>
+                <a href="https://wa.me/201098403244" target="_blank" class="block mt-2 px-4 py-3 bg-whatsapp text-white rounded-lg font-bold"><i class="fa-brands fa-whatsapp"></i> تواصل عبر واتساب</a>
             </div>
         </div>
     </nav>
 
-    <!-- ================== صفحة الهبوط (Landing Page) ================== -->
-    <div id="landing-page">
-        <!-- القسم الرئيسي (Hero) -->
-        <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-brand-50 via-white to-gray-100 overflow-hidden">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <div class="inline-flex items-center px-4 py-2 rounded-full bg-brand-100 text-brand-700 text-sm font-semibold mb-6">
-                    <span class="ml-2">✨</span> جودة، دقة، واحترافية عالية
+    <!-- القسم الرئيسي (Hero) -->
+    <section id="home" class="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-gradient-to-br from-brand-50 via-white to-gray-100 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-brand-100 text-brand-700 text-sm font-semibold mb-6">
+                <span class="ml-2">✨</span> جودة، دقة، واحترافية عالية
+            </div>
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                نحول <span class="gradient-text">البيانات</span> إلى قرارات، و<span class="gradient-text">الكلمات</span> إلى تأثير
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
+                أقدم حلولاً متكاملة في تحليل البيانات لتنمية أعمالك، وخدمات كتابة المحتوى، مع التزام تام بالجودة والمواعيد.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="https://wa.me/201098403244" target="_blank" class="px-8 py-4 bg-whatsapp text-white rounded-lg font-bold hover:bg-whatsappHover transition shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> تواصل معي مباشرة
+                </a>
+                <a href="#portfolio" class="px-8 py-4 bg-white text-gray-700 border border-gray-300 rounded-lg font-bold hover:bg-gray-50 transition">
+                    شاهد أعمالي
+                </a>
+            </div>
+        </div>
+        <!-- عناصر ديكور -->
+        <div class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
+        <div class="absolute top-1/2 right-0 -translate-y-1/2 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
+    </section>
+
+    <!-- قسم الخدمات (Services) -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">خدمات متكاملة لنجاحك</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">أجمع بين المهارات التقنية في البيانات والحس الإبداعي في الكتابة.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- تحليل البيانات -->
+                <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">تحليل البيانات</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">تحويل الأرقام الخام إلى رؤى قابلة للتنفيذ. إنشاء لوحات معلومات (Dashboards) تفاعلية.</p>
+                    <ul class="text-sm text-gray-500 space-y-2">
+                        <li><i class="fa-solid fa-check text-green-500 ml-2"></i>تحليل وتصور البيانات (Excel/PowerBI)</li>
+                    </ul>
                 </div>
-                <h1 class="text-4xl md:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                    نحول <span class="gradient-text">البيانات</span> إلى قرارات، و<span class="gradient-text">الكلمات</span> إلى تأثير
-                </h1>
-                <p class="text-lg md:text-xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-                    أقدم حلولاً متكاملة في تحليل البيانات لتنمية أعمالك، وخدمات كتابة المحتوى، مع لوحة تحكم خاصة للعملاء لمتابعة مشاريعهم.
+                <!-- كتابة المحتوى -->
+                <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-pen-nib"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">كتابة وتحرير المحتوى</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">صياغة محتوى إبداعي وتسويقي يتوافق مع معايير الـ SEO.</p>
+                </div>
+                <!-- خدمات رقمية -->
+                <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">خدمات رقمية متنوعة</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">إدخال البيانات بسرعة ودقة عالية، البحث عبر الإنترنت، وإدارة الملفات.</p>
+                </div>
+                <!-- الوساطة المالية -->
+                <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
+                    <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-money-bill-transfer"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">الوساطة المالية</h3>
+                    <p class="text-gray-600 leading-relaxed mb-4">استلام الأرباح نيابة عنك من المنصات العالمية، أو سداد المدفوعات.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم معرض الأعمال -->
+    <section id="portfolio" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">نماذج من أعمالي</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">إلق نظرة على بعض المشاريع التي أنجزتها للعملاء سابقاً.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- عمل 1 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="h-56 bg-blue-100 overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-chart-pie text-8xl text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">لوحة قياس أداء المبيعات</h3>
+                        <p class="text-sm text-gray-500 mb-4">تحليل بيانات باستخدام Excel & PowerBI</p>
+                        <p class="text-gray-600 text-sm line-clamp-2">تصميم داشبورد تفاعلية لشركة تجارة إلكترونية لمتابعة المبيعات اليومية والشهرية.</p>
+                    </div>
+                </div>
+
+                <!-- عمل 2 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="h-56 bg-green-100 overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-file-alt text-8xl text-green-300 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">كتابة محتوى لموقع تقني</h3>
+                        <p class="text-sm text-gray-500 mb-4">كتابة محتوى إبداعي & SEO</p>
+                        <p class="text-gray-600 text-sm line-clamp-2">كتابة سلسلة مقالات متوافقة مع السيو حول أحدث تقنيات الذكاء الاصطناعي.</p>
+                    </div>
+                </div>
+
+                <!-- عمل 3 -->
+                <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
+                    <div class="h-56 bg-yellow-100 overflow-hidden flex items-center justify-center">
+                        <i class="fa-solid fa-file-invoice-dollar text-8xl text-yellow-300 group-hover:scale-110 transition-transform duration-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">تقرير مالي سنوي</h3>
+                        <p class="text-sm text-gray-500 mb-4">إدخال بيانات وتنسيق تقارير</p>
+                        <p class="text-gray-600 text-sm line-clamp-2">إعداد وتنسيق التقرير المالي السنوي لإحدى الشركات الناشئة بدقة عالية.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم ضمان الجودة -->
+    <section id="guarantee" class="py-16 bg-brand-900 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
+
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 mb-6 border border-white/20">
+                <i class="fa-solid fa-shield-heart text-4xl text-yellow-400"></i>
+            </div>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">عهدنا إليكم: الجودة أو استعادة حقك</h2>
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-xl">
+                <p class="text-lg md:text-xl leading-relaxed mb-6">
+                    نحن نثق تماماً فيما نقدمه، لذا نضمن لك <span class="text-yellow-400 font-bold">كافة خدماتنا</span> (الكتابة، التحليل، وغيرها) لمدة <span class="font-bold text-white bg-brand-600 px-2 py-0.5 rounded">14 يوماً</span> للمراجعة الدقيقة وطلب التعديلات.
                 </p>
-                <div class="flex flex-col sm:flex-row justify-center gap-4">
-                    <button onclick="toggleLoginModal()" class="px-8 py-4 bg-brand-600 text-white rounded-lg font-bold hover:bg-brand-700 transition shadow-lg hover:shadow-xl transform hover:-translate-y-1">
-                        <i class="fa-solid fa-lock ml-2"></i> دخول العملاء
-                    </button>
-                    <a href="#portfolio" class="px-8 py-4 bg-white text-gray-700 border border-gray-300 rounded-lg font-bold hover:bg-gray-50 transition">
-                        شاهد أعمالي
+                <div class="w-full h-px bg-white/20 my-6"></div>
+                <p class="text-lg md:text-xl leading-relaxed">
+                    وبالنسبة <span class="text-yellow-400 font-bold">للخدمات المالية</span>، نوفر لك ضماناً لمدة <span class="font-bold text-white bg-green-600 px-2 py-0.5 rounded">3 أيام</span> للتأكد من وصول المعاملة وسلامتها.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم آراء العملاء -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ماذا يقول عملاؤنا؟</h2>
+                <p class="text-gray-600">قصص نجاح حقيقية من أشخاص تعاملوا معنا.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- رأي 1 -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
+                    <p class="text-gray-600 mb-6 relative z-10">"تعامل راقي جداً واحترافية عالية في تحليل البيانات. التقرير ساعدني جداً في فهم مبيعاتي بشكل أفضل."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">أ</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">أحمد محمد</h4>
+                            <p class="text-xs text-gray-500">صاحب متجر إلكتروني</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- رأي 2 -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
+                    <p class="text-gray-600 mb-6 relative z-10">"سرعة في الإنجاز ودقة في المواعيد، خاصة في موضوع الوساطة المالية. وفروا علي وقت ومجهود كبير."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">س</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">سارة علي</h4>
+                            <p class="text-xs text-gray-500">مصممة جرافيك</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- رأي 3 -->
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
+                    <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
+                    <p class="text-gray-600 mb-6 relative z-10">"جودة الكتابة ممتازة، المقالات كانت متوافقة مع السيو وجذابة للقارئ. بالتأكيد سأكرر التعامل."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">م</div>
+                        <div>
+                            <h4 class="font-bold text-gray-900">محمود حسن</h4>
+                            <p class="text-xs text-gray-500">مدون تقني</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم من أنا (About) -->
+    <section id="about" class="py-20 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center gap-12">
+                <div class="md:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1553877612-823241c4aa69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About Me" class="rounded-2xl shadow-xl w-full object-cover h-96">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">شريكك الموثوق للنجاح الرقمي</h2>
+                    <p class="text-gray-600 mb-6 leading-relaxed text-lg">
+                        أنا <span class="font-bold text-brand-600">مصطفى حماده</span>، متخصص شغوف بالبيانات والكلمات. أساعد الأفراد والشركات على فهم بياناتهم بشكل أفضل من خلال التحليل الدقيق، وأساعدهم في إيصال صوتهم للعالم من خلال محتوى جذاب ومؤثر.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">
+                        هدفي هو تقديم خدمات لا تكتفي بتنفيذ المهمة فحسب، بل تضيف قيمة حقيقية لمشروعك. التزم بالدقة في المواعيد والجودة العالية في التنفيذ.
+                    </p>
+                    <a href="https://wa.me/201098403244" target="_blank" class="text-whatsapp font-bold hover:text-green-700 transition flex items-center gap-2">
+                        تواصل معي عبر واتساب <i class="fa-brands fa-whatsapp text-2xl"></i>
                     </a>
                 </div>
             </div>
-            <!-- عناصر ديكور -->
-            <div class="absolute top-1/2 left-0 -translate-y-1/2 w-64 h-64 bg-brand-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob"></div>
-            <div class="absolute top-1/2 right-0 -translate-y-1/2 w-64 h-64 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000"></div>
-        </section>
+        </div>
+    </section>
 
-        <!-- قسم الخدمات (Services) -->
-        <section id="services" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">خدمات متكاملة لنجاحك</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">أجمع بين المهارات التقنية في البيانات والحس الإبداعي في الكتابة.</p>
+    <!-- قسم طرق الدفع -->
+    <section id="payment" class="py-20 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">طرق دفع مرنة تناسب الجميع</h2>
+                <p class="text-gray-600">نوفر لك مجموعة واسعة من خيارات الدفع الآمنة والسهلة.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <!-- المجموعة 1: الدفع الإلكتروني العالمي -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-globe"></i> حلول عالمية
+                    </h3>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <div class="flex flex-col items-center"><i class="fa-brands fa-paypal text-4xl text-blue-800 mb-2"></i><span class="text-sm font-semibold text-gray-600">PayPal</span></div>
+                        <div class="flex flex-col items-center"><i class="fa-brands fa-cc-visa text-4xl text-blue-600 mb-2"></i><span class="text-sm font-semibold text-gray-600">Visa</span></div>
+                        <div class="flex flex-col items-center"><i class="fa-brands fa-cc-mastercard text-4xl text-red-600 mb-2"></i><span class="text-sm font-semibold text-gray-600">Mastercard</span></div>
+                    </div>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <!-- تحليل البيانات -->
-                    <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
-                        <div class="w-16 h-16 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-chart-line"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">تحليل البيانات</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">تحويل الأرقام الخام إلى رؤى قابلة للتنفيذ. إنشاء لوحات معلومات (Dashboards) تفاعلية.</p>
-                        <ul class="text-sm text-gray-500 space-y-2">
-                            <li><i class="fa-solid fa-check text-green-500 ml-2"></i>تحليل وتصور البيانات (Excel/PowerBI)</li>
-                        </ul>
+
+                <!-- المجموعة 2: منصات العمل الحر -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-briefcase"></i> منصات العمل الحر
+                    </h3>
+                    <div class="flex flex-wrap justify-center gap-3">
+                        <a href="https://khamsat.com/user/mostafa-hamada1" target="_blank" class="px-3 py-1 bg-green-600 text-white rounded-full text-sm font-bold hover:bg-green-700 transition">خمسات</a>
+                        <a href="https://mostaql.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700 transition">مستقل</a>
+                        <a href="https://nafezly.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-teal-600 text-white rounded-full text-sm font-bold hover:bg-teal-700 transition">نفذلي</a>
+                        <a href="https://kafiil.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-bold hover:bg-purple-700 transition">كفيل</a>
+                        <a href="https://www.upwork.com/freelancers/~0159513fd81c399c63" target="_blank" class="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-bold hover:bg-green-600 transition">Upwork</a>
+                        <span class="px-3 py-1 bg-green-400 text-white rounded-full text-sm font-bold opacity-75">Fiverr</span>
                     </div>
-                    <!-- كتابة المحتوى -->
-                    <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
-                        <div class="w-16 h-16 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-pen-nib"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">كتابة وتحرير المحتوى</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">صياغة محتوى إبداعي وتسويقي يتوافق مع معايير الـ SEO.</p>
-                    </div>
-                    <!-- خدمات رقمية -->
-                    <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
-                        <div class="w-16 h-16 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-laptop-code"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">خدمات رقمية متنوعة</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">إدخال البيانات بسرعة ودقة عالية، البحث عبر الإنترنت، وإدارة الملفات.</p>
-                    </div>
-                    <!-- الوساطة المالية -->
-                    <div class="group bg-gray-50 p-8 rounded-2xl hover:bg-white hover:shadow-2xl transition-all duration-300 border border-transparent hover:border-gray-100">
-                        <div class="w-16 h-16 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 text-3xl mb-6 group-hover:scale-110 transition-transform">
-                            <i class="fa-solid fa-money-bill-transfer"></i>
-                        </div>
-                        <h3 class="text-xl font-bold text-gray-900 mb-3">الوساطة المالية</h3>
-                        <p class="text-gray-600 leading-relaxed mb-4">استلام الأرباح نيابة عنك من المنصات العالمية، أو سداد المدفوعات.</p>
-                    </div>
+                </div>
+
+                <!-- المجموعة 3: حلول محلية (مصر) -->
+                <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
+                    <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-location-dot"></i> للعملاء في مصر
+                    </h3>
+                    <ul class="space-y-3 text-right pr-4">
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-bolt text-purple-600"></i> انستاباي (InstaPay)</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-mobile-screen text-brand-600"></i> المحافظ الإلكترونية</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa-regular fa-credit-card text-indigo-500"></i> كروت (Telda, Klivvr, Nexta)</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-credit-card text-yellow-500"></i> كارت فوري الأصفر</li>
+                        <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-building-columns text-green-600"></i> الحوالات البريدية</li>
+                    </ul>
                 </div>
             </div>
-        </section>
 
-        <!-- قسم معرض الأعمال (تمت استعادته وتثبيته) -->
-        <section id="portfolio" class="py-20 bg-gray-50 border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">نماذج من أعمالي</h2>
-                    <p class="text-gray-600 max-w-2xl mx-auto">إلق نظرة على بعض المشاريع التي أنجزتها للعملاء سابقاً.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- عمل 1 -->
-                    <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                        <div class="h-56 bg-blue-100 overflow-hidden flex items-center justify-center">
-                            <i class="fa-solid fa-chart-pie text-8xl text-blue-300 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">لوحة قياس أداء المبيعات</h3>
-                            <p class="text-sm text-gray-500 mb-4">تحليل بيانات باستخدام Excel & PowerBI</p>
-                            <p class="text-gray-600 text-sm line-clamp-2">تصميم داشبورد تفاعلية لشركة تجارة إلكترونية لمتابعة المبيعات اليومية والشهرية.</p>
-                        </div>
+            <!-- ملاحظة لطرق أخرى -->
+            <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 inline-block max-w-3xl mx-auto w-full">
+                <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
+                    <div class="bg-blue-100 p-3 rounded-full text-blue-600 hidden md:block">
+                        <i class="fa-solid fa-comments-dollar text-2xl"></i>
                     </div>
-
-                    <!-- عمل 2 -->
-                    <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                        <div class="h-56 bg-green-100 overflow-hidden flex items-center justify-center">
-                            <i class="fa-solid fa-file-alt text-8xl text-green-300 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">كتابة محتوى لموقع تقني</h3>
-                            <p class="text-sm text-gray-500 mb-4">كتابة محتوى إبداعي & SEO</p>
-                            <p class="text-gray-600 text-sm line-clamp-2">كتابة سلسلة مقالات متوافقة مع السيو حول أحدث تقنيات الذكاء الاصطناعي.</p>
-                        </div>
+                    <div class="flex-1">
+                        <h4 class="font-bold text-gray-900 mb-1">هل لديك وسيلة دفع أخرى؟</h4>
+                        <p class="text-sm text-gray-600">لا تتردد في التواصل معنا لمناقشة إمكانية قبول وسيلة الدفع المناسبة لك. نحن هنا لتسهيل الأمور عليك.</p>
                     </div>
-
-                    <!-- عمل 3 -->
-                    <div class="group relative overflow-hidden rounded-2xl shadow-lg bg-white">
-                        <div class="h-56 bg-yellow-100 overflow-hidden flex items-center justify-center">
-                            <i class="fa-solid fa-file-invoice-dollar text-8xl text-yellow-300 group-hover:scale-110 transition-transform duration-500"></i>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-bold text-gray-900 mb-2">تقرير مالي سنوي</h3>
-                            <p class="text-sm text-gray-500 mb-4">إدخال بيانات وتنسيق تقارير</p>
-                            <p class="text-gray-600 text-sm line-clamp-2">إعداد وتنسيق التقرير المالي السنوي لإحدى الشركات الناشئة بدقة عالية.</p>
-                        </div>
-                    </div>
+                    <a href="https://wa.me/201098403244" target="_blank" class="whitespace-nowrap bg-white text-blue-600 border border-blue-200 hover:bg-blue-600 hover:text-white transition px-5 py-2 rounded-lg font-bold text-sm shadow-sm">
+                        ناقش الدفع الآن
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
+    
+    <!-- قسم التواصل (Contact) -->
+    <section id="contact" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">لنتحدث عن مشروعك</h2>
+                <p class="text-gray-600">اختر الطريقة التي تناسبك للتواصل.</p>
+            </div>
 
-        <!-- قسم ضمان الجودة (تمت إضافته مجدداً) -->
-        <section id="guarantee" class="py-16 bg-brand-900 text-white relative overflow-hidden">
-            <div class="absolute top-0 right-0 w-64 h-64 bg-white rounded-full mix-blend-overlay filter blur-3xl opacity-10"></div>
-            <div class="absolute bottom-0 left-0 w-64 h-64 bg-brand-500 rounded-full mix-blend-overlay filter blur-3xl opacity-20"></div>
-
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-                <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/10 mb-6 border border-white/20">
-                    <i class="fa-solid fa-shield-heart text-4xl text-yellow-400"></i>
-                </div>
-                <h2 class="text-3xl md:text-4xl font-bold mb-6">عهدنا إليكم: الجودة أو استعادة حقك</h2>
-                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/10 shadow-xl">
-                    <p class="text-lg md:text-xl leading-relaxed mb-6">
-                        نحن نثق تماماً فيما نقدمه، لذا نضمن لك <span class="text-yellow-400 font-bold">كافة خدماتنا</span> (الكتابة، التحليل، وغيرها) لمدة <span class="font-bold text-white bg-brand-600 px-2 py-0.5 rounded">14 يوماً</span> للمراجعة الدقيقة وطلب التعديلات.
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                
+                <!-- خيار 1: التواصل عبر واتساب -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 p-8 flex flex-col items-center text-center h-full">
+                    <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-whatsapp text-4xl mb-6">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">دردشة سريعة ومباشرة</h3>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        هل تفضل المحادثات السريعة؟ تواصل معي مباشرة عبر واتساب لمناقشة التفاصيل أو الاستفسار عن الخدمات بشكل فوري.
                     </p>
-                    <div class="w-full h-px bg-white/20 my-6"></div>
-                    <p class="text-lg md:text-xl leading-relaxed">
-                        وبالنسبة <span class="text-yellow-400 font-bold">للخدمات المالية</span>، نوفر لك ضماناً لمدة <span class="font-bold text-white bg-green-600 px-2 py-0.5 rounded">3 أيام</span> للتأكد من وصول المعاملة وسلامتها.
-                    </p>
+                    <a href="https://wa.me/201098403244" target="_blank" class="w-full py-4 bg-whatsapp text-white rounded-xl font-bold text-lg hover:bg-whatsappHover transition transform hover:-translate-y-1 shadow-lg shadow-green-500/30 flex justify-center items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        <span>اضغط للمراسلة فوراً</span>
+                    </a>
+                    <p class="mt-4 text-sm text-gray-400 dir-ltr font-mono">+20 109 840 3244</p>
                 </div>
-            </div>
-        </section>
 
-        <!-- قسم آراء العملاء (تمت إضافته مجدداً) -->
-        <section id="testimonials" class="py-20 bg-white">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="text-center mb-16">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">ماذا يقول عملاؤنا؟</h2>
-                    <p class="text-gray-600">قصص نجاح حقيقية من أشخاص تعاملوا معنا.</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- رأي 1 -->
-                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
-                        <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
-                        <p class="text-gray-600 mb-6 relative z-10">"تعامل راقي جداً واحترافية عالية في تحليل البيانات. التقرير ساعدني جداً في فهم مبيعاتي بشكل أفضل."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold text-lg">أ</div>
+                <!-- خيار 2: نموذج البريد الإلكتروني -->
+                <div class="bg-white rounded-3xl shadow-lg overflow-hidden border border-gray-100 p-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-10 h-10 bg-brand-100 rounded-full flex items-center justify-center text-brand-600">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-900">راسلني عبر البريد</h3>
+                    </div>
+                    
+                    <form id="contactForm" class="space-y-5">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div>
-                                <h4 class="font-bold text-gray-900">أحمد محمد</h4>
-                                <p class="text-xs text-gray-500">صاحب متجر إلكتروني</p>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">الاسم الكامل</label>
+                                <input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none focus:border-brand-500 transition">
                             </div>
-                        </div>
-                    </div>
-                    <!-- رأي 2 -->
-                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
-                        <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
-                        <p class="text-gray-600 mb-6 relative z-10">"سرعة في الإنجاز ودقة في المواعيد، خاصة في موضوع الوساطة المالية. وفروا علي وقت ومجهود كبير."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-green-600 rounded-full flex items-center justify-center text-white font-bold text-lg">س</div>
                             <div>
-                                <h4 class="font-bold text-gray-900">سارة علي</h4>
-                                <p class="text-xs text-gray-500">مصممة جرافيك</p>
+                                <label class="block text-sm font-medium text-gray-700 mb-1">البريد الإلكتروني</label>
+                                <input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none focus:border-brand-500 transition">
                             </div>
                         </div>
-                    </div>
-                    <!-- رأي 3 -->
-                    <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100 relative">
-                        <i class="fa-solid fa-quote-right text-4xl text-brand-200 absolute top-6 right-6"></i>
-                        <p class="text-gray-600 mb-6 relative z-10">"جودة الكتابة ممتازة، المقالات كانت متوافقة مع السيو وجذابة للقارئ. بالتأكيد سأكرر التعامل."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 bg-purple-600 rounded-full flex items-center justify-center text-white font-bold text-lg">م</div>
-                            <div>
-                                <h4 class="font-bold text-gray-900">محمود حسن</h4>
-                                <p class="text-xs text-gray-500">مدون تقني</p>
-                            </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">الخدمة المطلوبة</label>
+                            <select name="service" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none focus:border-brand-500 transition">
+                                <option>تحليل البيانات</option>
+                                <option>كتابة المحتوى</option>
+                                <option>الوساطة المالية</option>
+                                <option>تدقيق لغوي</option>
+                                <option>أخرى</option>
+                            </select>
                         </div>
-                    </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">تفاصيل الرسالة</label>
+                            <textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none focus:border-brand-500 transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-600 text-white font-bold py-4 rounded-xl hover:bg-brand-700 transition flex justify-center items-center gap-2">
+                            <span>إرسال عبر البريد</span>
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- قسم من أنا (About) - تمت إضافته -->
-        <section id="about" class="py-20 bg-gray-50 border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/2">
-                        <img src="https://images.unsplash.com/photo-1553877612-823241c4aa69?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="About Me" class="rounded-2xl shadow-xl w-full object-cover h-96">
-                    </div>
-                    <div class="md:w-1/2">
-                        <h2 class="text-3xl font-bold text-gray-900 mb-6">شريكك الموثوق للنجاح الرقمي</h2>
-                        <p class="text-gray-600 mb-6 leading-relaxed text-lg">
-                            أنا <span class="font-bold text-brand-600">مصطفى حماده</span>، متخصص شغوف بالبيانات والكلمات. أساعد الأفراد والشركات على فهم بياناتهم بشكل أفضل من خلال التحليل الدقيق، وأساعدهم في إيصال صوتهم للعالم من خلال محتوى جذاب ومؤثر.
-                        </p>
-                        <p class="text-gray-600 mb-8 leading-relaxed text-lg">
-                            هدفي هو تقديم خدمات لا تكتفي بتنفيذ المهمة فحسب، بل تضيف قيمة حقيقية لمشروعك. التزم بالدقة في المواعيد والجودة العالية في التنفيذ.
-                        </p>
-                        <a href="#contact" class="text-brand-600 font-bold hover:text-brand-800 transition flex items-center gap-2">
-                            ابدأ مشروعك معي الآن <i class="fa-solid fa-arrow-left"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم طرق الدفع (تمت استعادته بالتفاصيل) -->
-        <section id="payment" class="py-20 bg-white border-t border-gray-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                <div class="mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">طرق دفع مرنة تناسب الجميع</h2>
-                    <p class="text-gray-600">نوفر لك مجموعة واسعة من خيارات الدفع الآمنة والسهلة.</p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                    <!-- المجموعة 1: الدفع الإلكتروني العالمي -->
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-globe"></i> حلول عالمية
-                        </h3>
-                        <div class="flex flex-wrap justify-center gap-4">
-                            <div class="flex flex-col items-center"><i class="fa-brands fa-paypal text-4xl text-blue-800 mb-2"></i><span class="text-sm font-semibold text-gray-600">PayPal</span></div>
-                            <div class="flex flex-col items-center"><i class="fa-brands fa-cc-visa text-4xl text-blue-600 mb-2"></i><span class="text-sm font-semibold text-gray-600">Visa</span></div>
-                            <div class="flex flex-col items-center"><i class="fa-brands fa-cc-mastercard text-4xl text-red-600 mb-2"></i><span class="text-sm font-semibold text-gray-600">Mastercard</span></div>
-                        </div>
-                    </div>
-
-                    <!-- المجموعة 2: منصات العمل الحر -->
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-briefcase"></i> منصات العمل الحر
-                        </h3>
-                        <div class="flex flex-wrap justify-center gap-3">
-                            <a href="https://khamsat.com/user/mostafa-hamada1" target="_blank" class="px-3 py-1 bg-green-600 text-white rounded-full text-sm font-bold hover:bg-green-700 transition">خمسات</a>
-                            <a href="https://mostaql.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-blue-600 text-white rounded-full text-sm font-bold hover:bg-blue-700 transition">مستقل</a>
-                            <a href="https://nafezly.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-teal-600 text-white rounded-full text-sm font-bold hover:bg-teal-700 transition">نفذلي</a>
-                            <a href="https://kafiil.com/u/mostafa403" target="_blank" class="px-3 py-1 bg-purple-600 text-white rounded-full text-sm font-bold hover:bg-purple-700 transition">كفيل</a>
-                            <a href="https://www.upwork.com/freelancers/~0159513fd81c399c63" target="_blank" class="px-3 py-1 bg-green-500 text-white rounded-full text-sm font-bold hover:bg-green-600 transition">Upwork</a>
-                            <span class="px-3 py-1 bg-green-400 text-white rounded-full text-sm font-bold opacity-75">Fiverr</span>
-                        </div>
-                    </div>
-
-                    <!-- المجموعة 3: حلول محلية (مصر) -->
-                    <div class="bg-white p-6 rounded-2xl border border-gray-100 hover:shadow-lg transition">
-                        <h3 class="text-xl font-bold text-brand-800 mb-6 flex items-center justify-center gap-2">
-                            <i class="fa-solid fa-location-dot"></i> للعملاء في مصر
-                        </h3>
-                        <ul class="space-y-3 text-right pr-4">
-                            <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-bolt text-purple-600"></i> انستاباي (InstaPay)</li>
-                            <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-mobile-screen text-brand-600"></i> المحافظ الإلكترونية</li>
-                            <li class="flex items-center gap-2 text-gray-700"><i class="fa-regular fa-credit-card text-indigo-500"></i> كروت (Telda, Klivvr, Nexta)</li>
-                            <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-credit-card text-yellow-500"></i> كارت فوري الأصفر</li>
-                            <li class="flex items-center gap-2 text-gray-700"><i class="fa-solid fa-building-columns text-green-600"></i> الحوالات البريدية</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- ملاحظة لطرق أخرى (تمت إضافتها) -->
-                <div class="bg-blue-50 border border-blue-100 rounded-xl p-6 inline-block max-w-3xl mx-auto w-full">
-                    <div class="flex flex-col md:flex-row items-center gap-4 text-center md:text-right">
-                        <div class="bg-blue-100 p-3 rounded-full text-blue-600 hidden md:block">
-                            <i class="fa-solid fa-comments-dollar text-2xl"></i>
-                        </div>
-                        <div class="flex-1">
-                            <h4 class="font-bold text-gray-900 mb-1">هل لديك وسيلة دفع أخرى؟</h4>
-                            <p class="text-sm text-gray-600">لا تتردد في التواصل معنا لمناقشة إمكانية قبول وسيلة الدفع المناسبة لك. نحن هنا لتسهيل الأمور عليك.</p>
-                        </div>
-                        <a href="#contact" class="whitespace-nowrap bg-white text-blue-600 border border-blue-200 hover:bg-blue-600 hover:text-white transition px-5 py-2 rounded-lg font-bold text-sm shadow-sm">
-                            ناقش الدفع الآن
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- قسم التواصل (Contact) -->
-        <section id="contact" class="py-20 bg-white">
-            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
-                    <div class="p-8 md:p-12">
-                        <div class="text-center mb-10">
-                            <h2 class="text-3xl font-bold text-gray-900 mb-4">لنتحدث عن مشروعك</h2>
-                            <p class="text-gray-600">املأ النموذج وسأرد عليك في أقرب وقت.</p>
-                        </div>
-                        <form id="contactForm" class="space-y-6">
-                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div><label class="block text-sm font-medium text-gray-700 mb-2">الاسم الكامل</label><input type="text" name="name" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none"></div>
-                                <div><label class="block text-sm font-medium text-gray-700 mb-2">البريد الإلكتروني</label><input type="email" name="email" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none"></div>
-                            </div>
-                            
-                            <!-- تمت استعادة قائمة الخدمات -->
-                            <div>
-                                <label class="block text-sm font-medium text-gray-700 mb-2">الخدمة المطلوبة</label>
-                                <select name="service" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none">
-                                    <option>تحليل البيانات</option>
-                                    <option>كتابة المحتوى</option>
-                                    <option>الوساطة المالية</option>
-                                    <option>تدقيق لغوي</option>
-                                    <option>أخرى</option>
-                                </select>
-                            </div>
-
-                            <div><label class="block text-sm font-medium text-gray-700 mb-2">رسالتك</label><textarea name="message" rows="4" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 outline-none"></textarea></div>
-                            <button type="submit" class="w-full bg-brand-600 text-white font-bold py-4 rounded-lg hover:bg-brand-700 transition">إرسال الرسالة</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
-
-    <!-- ================== لوحة تحكم العميل (Client Portal) ================== -->
-    <div id="client-portal" class="hidden-section pt-24 pb-20 min-h-screen bg-gray-100">
+    <!-- الفوتر (Footer) -->
+    <footer class="bg-gray-900 text-white pt-12 pb-8 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-2xl shadow-sm">
-                <div>
-                    <h1 class="text-2xl font-bold text-gray-900">لوحة التحكم</h1>
-                    <p class="text-gray-500 mt-1">أهلاً بك <span id="portal-username" class="text-brand-600 font-bold"></span>، إليك ملخص مشاريعك.</p>
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-4 md:mb-0">
+                    <a href="#" class="text-2xl font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-layer-group text-brand-500"></i>
+                        <span>برو<span class="text-brand-500">سيرفس</span></span>
+                    </a>
+                    <p class="text-gray-400 mt-2 text-sm">خدمات احترافية ترتقي بأعمالك.</p>
                 </div>
-                <div class="mt-4 md:mt-0 flex gap-4 text-center">
-                    <div class="bg-blue-50 px-6 py-3 rounded-xl border border-blue-100">
-                        <div class="text-2xl font-bold text-blue-600" id="stats-active">0</div>
-                        <div class="text-xs text-gray-500 font-semibold">خدمات نشطة</div>
-                    </div>
-                    <div class="bg-green-50 px-6 py-3 rounded-xl border border-green-100">
-                        <div class="text-2xl font-bold text-green-600" id="stats-completed">0</div>
-                        <div class="text-xs text-gray-500 font-semibold">مكتملة</div>
-                    </div>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fa-brands fa-twitter text-xl"></i></a>
+                    <a href="https://wa.me/201098403244" target="_blank" class="text-gray-400 hover:text-whatsapp transition transform hover:scale-110"><i class="fa-brands fa-whatsapp text-xl"></i></a>
+                    <a href="#contact" class="text-gray-400 hover:text-white transition transform hover:scale-110"><i class="fa-solid fa-envelope text-xl"></i></a>
                 </div>
             </div>
-            <h2 class="text-xl font-bold text-gray-800 mb-4 border-r-4 border-brand-500 pr-3">خدماتي ومشروعاتي</h2>
-            <div class="grid grid-cols-1 gap-6" id="services-container"></div>
-        </div>
-    </div>
-
-    <!-- ================== النوافذ المنبثقة (Modals) ================== -->
-    <!-- Login Modal -->
-    <div id="login-modal" class="fixed inset-0 bg-black/50 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative">
-            <button onclick="toggleLoginModal()" class="absolute top-4 left-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-times text-xl"></i></button>
-            <div class="text-center mb-6">
-                <h3 class="text-2xl font-bold text-gray-900">تسجيل دخول العملاء</h3>
-                <p class="text-sm text-gray-500 mt-2">جرب: اسم المستخدم <code class="bg-gray-100 px-1 rounded">client</code> كلمة المرور <code class="bg-gray-100 px-1 rounded">123</code></p>
-            </div>
-            <form id="login-form" class="space-y-4">
-                <input type="text" id="username" placeholder="اسم المستخدم" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none" required>
-                <input type="password" id="password" placeholder="كلمة المرور" class="w-full px-4 py-3 rounded-lg border border-gray-300 outline-none" required>
-                <button type="submit" class="w-full bg-brand-600 text-white py-3 rounded-lg font-bold hover:bg-brand-700">دخول</button>
-            </form>
-        </div>
-    </div>
-
-    <!-- Rating Modal -->
-    <div id="rating-modal" class="fixed inset-0 bg-black/60 z-[70] hidden flex items-center justify-center p-4 backdrop-blur-sm">
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-lg p-0 overflow-hidden">
-            <div class="bg-brand-600 p-6 text-white text-center">
-                <h3 class="text-xl font-bold">قيم تجربتك معنا</h3>
-                <p class="text-brand-100 text-sm mt-1" id="rating-service-name">اسم الخدمة</p>
-            </div>
-            <div class="p-8 space-y-6">
-                <div class="flex justify-between items-center border-b border-gray-100 pb-4">
-                    <span class="font-bold text-gray-700">جودة الخدمة</span>
-                    <div class="star-rating flex gap-1 text-2xl text-gray-300" data-criteria="quality">
-                        <i class="fa-solid fa-star" data-val="1"></i>
-                        <i class="fa-solid fa-star" data-val="2"></i>
-                        <i class="fa-solid fa-star" data-val="3"></i>
-                        <i class="fa-solid fa-star" data-val="4"></i>
-                        <i class="fa-solid fa-star" data-val="5"></i>
-                    </div>
-                </div>
-                <div class="flex justify-between items-center border-b border-gray-100 pb-4">
-                    <span class="font-bold text-gray-700">التواصل والمتابعة</span>
-                    <div class="star-rating flex gap-1 text-2xl text-gray-300" data-criteria="communication">
-                        <i class="fa-solid fa-star" data-val="1"></i>
-                        <i class="fa-solid fa-star" data-val="2"></i>
-                        <i class="fa-solid fa-star" data-val="3"></i>
-                        <i class="fa-solid fa-star" data-val="4"></i>
-                        <i class="fa-solid fa-star" data-val="5"></i>
-                    </div>
-                </div>
-                <div class="flex justify-between items-center pb-4">
-                    <span class="font-bold text-gray-700">التسليم بالموعد</span>
-                    <div class="star-rating flex gap-1 text-2xl text-gray-300" data-criteria="delivery">
-                        <i class="fa-solid fa-star" data-val="1"></i>
-                        <i class="fa-solid fa-star" data-val="2"></i>
-                        <i class="fa-solid fa-star" data-val="3"></i>
-                        <i class="fa-solid fa-star" data-val="4"></i>
-                        <i class="fa-solid fa-star" data-val="5"></i>
-                    </div>
-                </div>
-                <div class="bg-gray-50 rounded-xl p-4 flex items-center justify-between">
-                    <span class="text-sm font-bold text-gray-500">متوسط التقييم العام:</span>
-                    <div class="flex items-center gap-2"><span id="average-score" class="text-3xl font-bold text-brand-600">0.0</span><div class="text-yellow-400 text-xl"><i class="fa-solid fa-star"></i></div></div>
-                </div>
-                <div class="flex gap-3 mt-4">
-                    <button onclick="submitRating()" class="flex-1 bg-brand-600 text-white py-3 rounded-lg font-bold hover:bg-brand-700">إرسال التقييم</button>
-                    <button onclick="closeRatingModal()" class="flex-1 bg-gray-200 text-gray-700 py-3 rounded-lg font-bold hover:bg-gray-300">إلغاء</button>
-                </div>
+            <div class="border-t border-gray-800 pt-8 text-center text-gray-500 text-sm">
+                &copy; 2024 مصطفى حماده. جميع الحقوق محفوظة.
             </div>
         </div>
-    </div>
+    </footer>
 
     <!-- Script Logic -->
     <script>
-        // Mock Data
-        const currentUser = {
-            username: "client",
-            name: "مصطفى حماده",
-            services: [
-                { id: 101, title: "تحليل بيانات مبيعات Q1", status: "completed", paymentStatus: "paid", price: "150$", deliveryDate: "2024-05-20", warrantyDays: 14, myRating: null },
-                { id: 102, title: "كتابة محتوى موقع الشركة", status: "active", paymentStatus: "pending", price: "200$", deliveryDate: null, warrantyDays: 14, myRating: null },
-                { id: 103, title: "وساطة مالية (Upwork)", status: "completed", paymentStatus: "paid", price: "500$", deliveryDate: "2024-05-25", warrantyDays: 3, myRating: { quality: 5, comms: 4, delivery: 5, avg: 4.7 } }
-            ]
-        };
-
-        let currentServiceIdToRate = null;
-        let ratingScores = { quality: 0, communication: 0, delivery: 0 };
-
-        // Navigation
-        function toggleLoginModal() { document.getElementById('login-modal').classList.toggle('hidden'); }
-        
-        function showSection(sectionId) {
-            document.getElementById('landing-page').style.display = 'none';
-            document.getElementById('client-portal').style.display = 'none';
-            document.getElementById(sectionId).style.display = 'block';
-            window.scrollTo(0,0);
-        }
-
-        // Mobile Menu
+        // Mobile Menu Toggle
         const mobileBtn = document.getElementById('mobile-menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
         mobileBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); });
         document.querySelectorAll('#mobile-menu a').forEach(link => { link.addEventListener('click', () => mobileMenu.classList.add('hidden')); });
 
-        // Login Logic
-        document.getElementById('login-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const user = document.getElementById('username').value;
-            const pass = document.getElementById('password').value;
-            if (user === 'client' && pass === '123') {
-                toggleLoginModal();
-                loginSuccess();
-            } else { alert('بيانات خاطئة! جرب client / 123'); }
-        });
-
-        function loginSuccess() {
-            document.getElementById('login-btn').classList.add('hidden');
-            document.getElementById('user-area').classList.remove('hidden');
-            document.getElementById('user-area').classList.add('flex');
-            document.getElementById('user-name-display').innerText = `مرحباً، ${currentUser.name}`;
-            document.getElementById('portal-username').innerText = currentUser.name;
-            renderServices();
-            showSection('client-portal');
-        }
-
-        function logout() {
-            document.getElementById('login-btn').classList.remove('hidden');
-            document.getElementById('user-area').classList.add('hidden');
-            document.getElementById('user-area').classList.remove('flex');
-            showSection('landing-page');
-        }
-
-        // Formspree Logic
+        // Formspree Logic (Real Sending Code)
         const contactForm = document.getElementById('contactForm');
         contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const btn = contactForm.querySelector('button');
             const originalContent = btn.innerHTML;
+            
+            // 1. Loading state
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> جاري الإرسال...';
             btn.disabled = true;
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
             
-            // SIMULATION - Replace with actual Formspree ID
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            btn.innerHTML = '<i class="fa-solid fa-check"></i> تم الإرسال بنجاح';
-            btn.classList.replace('bg-brand-600', 'bg-green-600');
-            setTimeout(() => {
-                contactForm.reset();
-                btn.innerHTML = originalContent;
-                btn.classList.replace('bg-green-600', 'bg-brand-600');
-                btn.disabled = false;
-                alert('شكراً لتواصلك! سنرد عليك قريباً.');
-            }, 2000);
-        });
+            // ==========================================
+            // هام جداً: استبدل الرابط التالي برابطك الخاص من Formspree
+            // ==========================================
+            const formspreeUrl = 'https://formspree.io/f/xqelrrky'; 
 
-        // Dashboard Render
-        function renderServices() {
-            const container = document.getElementById('services-container');
-            container.innerHTML = '';
-            let activeCount = 0; let completedCount = 0;
-
-            currentUser.services.forEach(service => {
-                if (service.status === 'active') activeCount++; else completedCount++;
-
-                let warrantyHtml = '';
-                if (service.status === 'completed' && service.deliveryDate) {
-                    const deliveryDate = new Date(service.deliveryDate);
-                    const warrantyEnd = new Date(deliveryDate);
-                    warrantyEnd.setDate(deliveryDate.getDate() + service.warrantyDays);
-                    const today = new Date();
-                    const diffDays = Math.ceil((warrantyEnd - today) / (1000 * 60 * 60 * 24));
-
-                    if (diffDays > 0) {
-                        const percent = (diffDays / service.warrantyDays) * 100;
-                        warrantyHtml = `<div class="mt-4"><div class="flex justify-between text-sm mb-1"><span class="font-bold text-green-600"><i class="fa-solid fa-shield-halved"></i> الضمان ساري</span><span class="text-gray-500">متبقي ${diffDays} يوم</span></div><div class="w-full bg-gray-200 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full" style="width: ${percent}%"></div></div></div>`;
-                    } else {
-                        warrantyHtml = `<div class="mt-4 text-sm text-gray-400 font-bold"><i class="fa-solid fa-shield-cat"></i> انتهت فترة الضمان</div>`;
-                    }
+            try {
+                // Check if user updated the URL
+                if (formspreeUrl.includes('ضع_رابط_FORMSPREE_هنا')) {
+                    throw new Error('الرجاء تحديث رابط Formspree في الكود أولاً');
                 }
 
-                let ratingBtnHtml = '';
-                if (service.status === 'completed') {
-                    if (service.myRating) {
-                        ratingBtnHtml = `<div class="flex items-center gap-1 text-yellow-500 font-bold bg-yellow-50 px-3 py-1 rounded-lg"><span>${service.myRating.avg}</span> <i class="fa-solid fa-star"></i></div>`;
-                    } else {
-                        ratingBtnHtml = `<button onclick="openRatingModal(${service.id}, '${service.title}')" class="bg-white border border-brand-500 text-brand-600 px-4 py-2 rounded-lg text-sm font-bold hover:bg-brand-50 transition"><i class="fa-regular fa-star"></i> قيم الخدمة</button>`;
+                const response = await fetch(formspreeUrl, {
+                    method: 'POST',
+                    body: new FormData(contactForm),
+                    headers: {
+                        'Accept': 'application/json'
                     }
-                }
-
-                const statusBadge = service.status === 'active' ? '<span class="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-bold">جاري التنفيذ</span>' : '<span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm font-bold">مكتملة</span>';
-                
-                const card = `<div class="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 hover:shadow-md transition"><div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 gap-4"><div><h3 class="text-xl font-bold text-gray-900">${service.title}</h3><div class="flex items-center gap-2 mt-2">${statusBadge}<span class="text-xs text-gray-400">#${service.id}</span></div></div><div class="flex items-center gap-4"><span class="font-bold text-gray-700 text-lg">${service.price}</span>${ratingBtnHtml}</div></div><div class="border-t border-gray-100 pt-4">${warrantyHtml}</div></div>`;
-                container.innerHTML += card;
-            });
-
-            document.getElementById('stats-active').innerText = activeCount;
-            document.getElementById('stats-completed').innerText = completedCount;
-        }
-
-        // Rating System
-        function openRatingModal(id, title) {
-            currentServiceIdToRate = id;
-            document.getElementById('rating-service-name').innerText = title;
-            document.getElementById('rating-modal').classList.remove('hidden');
-            resetStars();
-        }
-        function closeRatingModal() { document.getElementById('rating-modal').classList.add('hidden'); }
-        function resetStars() {
-            ratingScores = { quality: 0, communication: 0, delivery: 0 };
-            document.querySelectorAll('.star-rating i').forEach(star => star.classList.remove('active'));
-            updateAverage();
-        }
-        document.querySelectorAll('.star-rating i').forEach(star => {
-            star.addEventListener('click', function() {
-                const val = parseInt(this.getAttribute('data-val'));
-                const criteria = this.parentElement.getAttribute('data-criteria');
-                ratingScores[criteria] = val;
-                const starsInGroup = this.parentElement.querySelectorAll('i');
-                starsInGroup.forEach(s => {
-                    const sVal = parseInt(s.getAttribute('data-val'));
-                    if (sVal <= val) s.classList.add('active'); else s.classList.remove('active');
                 });
-                updateAverage();
-            });
+
+                if (response.ok) {
+                    // 2. Success state
+                    btn.innerHTML = '<i class="fa-solid fa-check"></i> تم الإرسال بنجاح';
+                    btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
+                    btn.classList.add('bg-green-600', 'hover:bg-green-700');
+                    
+                    setTimeout(() => {
+                        contactForm.reset();
+                        btn.innerHTML = originalContent;
+                        btn.classList.remove('bg-green-600', 'hover:bg-green-700', 'opacity-75', 'cursor-not-allowed');
+                        btn.classList.add('bg-brand-600', 'hover:bg-brand-700');
+                        btn.disabled = false;
+                        alert('شكراً لتواصلك! سنرد عليك قريباً.');
+                    }, 2000);
+                } else {
+                    const data = await response.json();
+                    if (Object.hasOwn(data, 'errors')) {
+                        throw new Error(data["errors"].map(error => error["message"]).join(", "));
+                    } else {
+                        throw new Error('حدث خطأ أثناء الإرسال');
+                    }
+                }
+            } catch (error) {
+                // 3. Error state
+                console.error(error);
+                btn.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> خطأ في الإرسال';
+                btn.classList.remove('bg-brand-600', 'hover:bg-brand-700');
+                btn.classList.add('bg-red-600', 'hover:bg-red-700');
+                
+                alert('عذراً: ' + error.message);
+
+                setTimeout(() => {
+                    btn.innerHTML = originalContent;
+                    btn.classList.remove('bg-red-600', 'hover:bg-red-700', 'opacity-75', 'cursor-not-allowed');
+                    btn.classList.add('bg-brand-600', 'hover:bg-brand-700');
+                    btn.disabled = false;
+                }, 3000);
+            }
         });
-        function updateAverage() {
-            const avg = (ratingScores.quality + ratingScores.communication + ratingScores.delivery) / 3;
-            document.getElementById('average-score').innerText = avg > 0 ? avg.toFixed(1) : '0.0';
-        }
-        function submitRating() {
-            if (ratingScores.quality === 0 || ratingScores.communication === 0 || ratingScores.delivery === 0) { alert('يرجى تقييم جميع المعايير.'); return; }
-            const avg = (ratingScores.quality + ratingScores.communication + ratingScores.delivery) / 3;
-            const service = currentUser.services.find(s => s.id === currentServiceIdToRate);
-            if (service) service.myRating = { ...ratingScores, avg: avg.toFixed(1) };
-            alert('تم استلام تقييمك بنجاح!');
-            closeRatingModal();
-            renderServices();
-        }
+
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+            } else {
+                navbar.classList.remove('shadow-md');
+            }
+        });
     </script>
 </body>
 </html>
